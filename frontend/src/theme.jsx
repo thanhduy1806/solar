@@ -11,7 +11,7 @@ export const getTheme = (mode) =>
       background: {
         default: mode === "dark" ? "#121212" : "#fafafa",
         paper: mode === "dark" ? "#1d1d1d" : "#ffffff",
-        option: mode === 'dark' ? "#7d7965" : "#c1d2e3"
+        option: mode === 'dark' ? "#636155" : "#c1d2e3"
       },
       text: {
         header_option: mode === "dark" ? "#b48a60" : "#283593",

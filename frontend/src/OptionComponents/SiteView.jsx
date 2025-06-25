@@ -11,12 +11,23 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"; // “bộ chuy
 import dayjs from "dayjs"; // lib datetime using
 import MyButton from "../InteractComponent/myButton";
 import MyCalendar from "../InteractComponent/myCalendar";
-import { Box } from "@mui/system";
+import { Box, sizeHeight } from "@mui/system";
+import { ThemeContext } from "@emotion/react";
+import { useTheme } from "@mui/material/styles";
+import PowerIcon from "@mui/icons-material/Power";
+import { DiBackbone } from "react-icons/di";
+import { PiPlugChargingBold } from "react-icons/pi";
+import { GiCharging } from "react-icons/gi";
+import LocationPinIcon from "@mui/icons-material/LocationPin";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   let date = Date();
   const [BarData, setBarData] = useState([]);
   const [dateCalendar, setDateCalendar] = useState(dayjs(date));
+
+  const theme = useTheme();
 
   const path_bar = `http://localhost:8000/solardb/avr-data/`;
   const path_line = `http://localhost:8000/solardb/`;
@@ -39,105 +50,6 @@ function Dashboard() {
   }, []);
 
   return (
-    // <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-    //   <div style={{ flex: 2 }}>
-    //     <Grid
-    //       container
-    //       spacing={0}
-    //       sx={{ width: "100%", display: "flex", maxHeight: "200px" }}
-    //     >
-    //       <Grid
-    //         sx={{ minHeight: "200px", flex: 1, margin: " 0 20px 0 20px" }}
-    //       ></Grid>
-    //     </Grid>
-    //   </div>
-
-    //   <div
-    //     style={{
-    //       borderColor: "black",
-    //       borderWidth: "2px",
-    //       flex: 4,
-    //     }}
-    //   >
-    //     {" "}
-    //     <div
-    //       style={{ display: "flex", gap: "10px", margin: "8px 10px 20px 12px" }}
-    //     >
-    //       <MyCalendar />
-    //       <MyButton label={"MONTH"} />
-    //       <MyButton label={"YEAR"} />
-    //     </div>
-    //     <Grid
-    //       container
-    //       spacing={0}
-    //       sx={{
-    //         width: "100%",
-    //         display: "flex",
-    //         minHeight: "180px",
-    //         height: "280px",
-    //       }}
-    //     >
-    //       <Grid
-    //         sx={{
-    //           minHeight: "200px",
-    //           flex: 1,
-    //           margin: " 0 20px 0 20px",
-    //           boxShadow: 10,
-    //           borderColor: "grey",
-    //         }}
-    //       >
-    //         {BarData.length > 0 && (
-    //           <MyBarChart
-    //             bardata={BarData}
-    //             barkey1={Object.keys(BarData[0])[1]}
-    //             barkey2={Object.keys(BarData[0])[2]}
-    //           />
-    //         )}
-    //       </Grid>
-    //       <Grid
-    //         sx={{
-    //           minHeight: "200px",
-    //           flex: 1,
-    //           margin: " 0 20px 0 20px",
-    //           boxShadow: 10,
-    //           borderColor: "grey",
-    //         }}
-    //       >
-    //         {BarData.length > 0 && (
-    //           <MyLineChart
-    //             linedata={BarData}
-    //             linekey1={Object.keys(BarData[0])[1]}
-    //             linekey2={Object.keys(BarData[0])[2]}
-    //           />
-    //         )}
-    //       </Grid>
-    //     </Grid>
-    //   </div>
-
-    //   <div style={{ flex: 4 }}>
-    //     <Grid
-    //       container
-    //       spacing={0}
-    //       sx={{ width: "100%", display: "flex", minHeight: "250px" }}
-    //     >
-    //       <Grid
-    //         sx={{
-    //           minHeight: "200px",
-    //           flex: 1.5,
-    //           margin: " 0 20px 0 20px",
-    //           boxShadow: 10,
-    //           borderColor: "grey",
-    //         }}
-    //       >
-    //         <InverterRanking />
-    //       </Grid>
-
-    //       <Grid
-    //         sx={{ minHeight: "200px", flex: 1, margin: " 0 20px 0 20px" }}
-    //       ></Grid>
-    //     </Grid>
-    //   </div>
-    // </div>
     <Box
       sx={{
         padding: "20px",
@@ -153,26 +65,151 @@ function Dashboard() {
           width: "100%",
           height: "100%",
           flex: "1",
-          backgroundColor: "rgba(128, 128, 128, 0.5)"
+          backgroundColor: "rgba(128, 128, 128, 0.5)",
+          display: "flex",
+          flexDirection: "row",
         }}
       >
-        <MyCalendar />
-        <MyButton label={"MONTH"} />
-        <MyButton label={"YEAR"} />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            flex: "1",
+            justifyContent: "center",
+            paddingLeft: "10px"
+          }}
+        >
+          <Box>C&I Self-consumption</Box>
+
+          <Box>Normal</Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            flex: "2",
+            justifyContent: "center",
+          }}
+        >
+          <Box>
+            Inverter (){" "}
+            <Link
+              to="/devicelist"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                fontSize: "12px",
+              }}
+            >
+              Detail
+            </Link>{" "}
+          </Box>
+
+          <Box
+            sx={{
+              display: "inline-flex",
+              gap: 5,
+            }}
+          >
+            <Box>Info Not Available</Box>
+            <Box>Partial Capability</Box>
+            <Box>Non-Operative</Box>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            flex: "1",
+            justifyContent: "center",
+          }}
+        >
+          <Box>
+            String (){" "}
+            <Link
+              to="/topologyanalysis"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                fontSize: "12px",
+              }}
+            >
+              Detail
+            </Link>
+          </Box>
+
+          <Box>Cut-Out</Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            flex: "1",
+            justifyContent: "center",
+          }}
+        >
+          <Box>
+            Alarm (){" "}
+            <Link
+              to="active_alarm"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                fontSize: "12px",
+              }}
+            >
+              Detail
+            </Link>{" "}
+          </Box>
+
+          <Box
+            sx={{
+              display: "inline-flex",
+              gap: 5,
+            }}
+          >
+            <Box>Fault</Box>
+            <Box>Warning</Box>
+          </Box>
+        </Box>
       </Box>
       <Box
         sx={{
           width: "100%",
           height: "100%",
-          flex: "0.5",
+          flex: "0.2",
           backgroundColor: "rgba(128, 128, 128, 0.5)",
           padding: 2,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
         }}
       >
-        <div style={{width: '100%'}}>  <MyCalendar />
-        <MyButton label={"MONTH"} />
-        <MyButton label={"YEAR"} /></div>
-      
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+          }}
+        >
+          <MyCalendar />
+          <MyButton label={"DAILY"} />
+          <MyButton label={"MONTHLY"} />
+          <MyButton label={"YEARLY"} />
+        </Box>
+        <Box
+          sx={{
+            color: theme.palette.text.option,
+            textAlign: "center",
+            alignItems: "center",
+            display: "flex",
+          }}
+        >
+          <LocationPinIcon />
+          <Typography sx={{ ml: 1 }}>Bach khoa University</Typography>
+        </Box>
       </Box>
 
       <Box
@@ -183,18 +220,18 @@ function Dashboard() {
           display: "flex",
           flexDirection: "column",
           gap: 2,
-          backgroundColor: "rgba(128, 128, 128, 0.5)"
+          backgroundColor: "rgba(128, 128, 128, 0.5)",
         }}
       >
         <Box
           sx={{
-            
             width: "100%",
             height: "100%",
             flex: "1",
             display: "flex",
             flexDirection: "row",
             gap: 10,
+            paddingLeft: "10px"
           }}
         >
           <Box sx={{}}>Capicity</Box>
@@ -258,7 +295,8 @@ function Dashboard() {
           flex: "2",
           display: "flex",
           flexDirection: "row",
-          backgroundColor: "rgba(128, 128, 128, 0.5)"
+          backgroundColor: "rgba(128, 128, 128, 0.5)",
+          alignItems: "center",
         }}
       >
         <Box
@@ -275,8 +313,106 @@ function Dashboard() {
             width: "100%",
             height: "100%",
             flex: "2",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
           }}
-        ></Box>
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                flex: "1",
+              }}
+            >
+              <PiPlugChargingBold size={50} />
+            </Box>
+            <Box
+              sx={{
+                flex: "1",
+                textAlign: "center",
+              }}
+            >
+              Inverter
+            </Box>
+            <Box
+              sx={{
+                flex: "1",
+              }}
+            >
+              {}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+            }}
+          >
+            <Box
+              sx={{
+                flex: "1",
+                alignItems: "center",
+                justifyItems: "center",
+                justifyContent: "center",
+                justifySelf: "center",
+                textAlign: "center",
+              }}
+            >
+              <GiCharging size={50} />{" "}
+            </Box>
+            <Box
+              sx={{
+                flex: "1",
+                textAlign: "center",
+              }}
+            >
+              Energy Meter
+            </Box>
+            <Box
+              sx={{
+                flex: "1",
+              }}
+            >
+              {}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                flex: "1",
+              }}
+            >
+              <DiBackbone size={50} />
+            </Box>
+            <Box
+              sx={{
+                flex: "1",
+                textAlign: "center",
+              }}
+            >
+              Grid
+            </Box>
+            <Box
+              sx={{
+                flex: "1",
+              }}
+            >
+              {}
+            </Box>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

@@ -19,6 +19,7 @@ const MyCalendar = () => {
           borderColor: theme.palette.text.header_option,
           textField: {
             sx: {
+              
                 maxHeight : "100%",
               // màu viền
               "& .MuiOutlinedInput-root": {

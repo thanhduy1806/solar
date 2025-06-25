@@ -55,7 +55,6 @@ function InverterRanking() {
         maxHeight: "300px",
         overflow: "hidden",
         backgroundColor: "#0e1a23",
-        borderRadius: "12px",
         padding: "10px",
       }}
     >
