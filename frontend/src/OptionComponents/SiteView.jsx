@@ -65,7 +65,7 @@ function Dashboard() {
           width: "100%",
           height: "100%",
           flex: "1",
-          backgroundColor: "rgba(128, 128, 128, 0.5)",
+          backgroundColor: theme.palette.background.box,
           display: "flex",
           flexDirection: "row",
         }}
@@ -181,7 +181,7 @@ function Dashboard() {
           width: "100%",
           height: "100%",
           flex: "0.2",
-          backgroundColor: "rgba(128, 128, 128, 0.5)",
+          backgroundColor: theme.palette.background.box,
           padding: 2,
           display: "flex",
           flexDirection: "row",
@@ -220,7 +220,7 @@ function Dashboard() {
           display: "flex",
           flexDirection: "column",
           gap: 2,
-          backgroundColor: "rgba(128, 128, 128, 0.5)",
+          backgroundColor: theme.palette.background.box,
         }}
       >
         <Box
@@ -231,7 +231,8 @@ function Dashboard() {
             display: "flex",
             flexDirection: "row",
             gap: 10,
-            paddingLeft: "10px"
+            paddingLeft: "10px",
+            backgroundColor: theme.palette.background.head_box
           }}
         >
           <Box sx={{}}>Capicity</Box>
@@ -295,7 +296,7 @@ function Dashboard() {
           flex: "2",
           display: "flex",
           flexDirection: "row",
-          backgroundColor: "rgba(128, 128, 128, 0.5)",
+          backgroundColor: theme.palette.background.box,
           alignItems: "center",
         }}
       >

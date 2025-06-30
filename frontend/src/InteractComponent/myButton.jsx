@@ -23,7 +23,7 @@
 import { Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-const MyButton = ({ label, sx = {}, ...rest }) => {
+const   MyButton = ({ label, sx = {}, ...rest }) => {
   const theme = useTheme();
 
   return (
@@ -36,7 +36,7 @@ const MyButton = ({ label, sx = {}, ...rest }) => {
       }}
       {...rest} // truyền các props khác như onClick, className,...
     >
-      {label}
+      {label} 
     </Button>
   );
 };

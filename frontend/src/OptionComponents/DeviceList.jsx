@@ -346,15 +346,17 @@ const weatherdata = [
 ];
 
 const StickyTable = ({ rows }) => {
+  let theme = useTheme();
   return (
     <TableContainer
       component={Paper}
       sx={{
         maxHeight: 500,
         overflow: "auto",
+        backgroundColor: "#1b1b1b",
       }}
     >
-      <Table stickyHeader sx={{min}}>
+      <Table stickyHeader>
         <TableHead>
           <TableRow>
             <TableCell
@@ -362,8 +364,9 @@ const StickyTable = ({ rows }) => {
                 position: "sticky",
                 left: 0,
                 zIndex: 2,
-                backgroundColor: "#003049",
+                backgroundColor: theme.palette.text.header_option,
                 color: "white",
+                minWidth: 180,
               }}
             >
               Inverter Name
@@ -371,16 +374,16 @@ const StickyTable = ({ rows }) => {
             <TableCell
               sx={{
                 position: "sticky",
-                left: 237, // bằng độ rộng cột 1
+                left: 180,
                 zIndex: 2,
-                backgroundColor: "#003049",
+                backgroundColor: theme.palette.text.header_option,
                 color: "white",
+                minWidth: 150,
               }}
             >
               Syst. Diag.
             </TableCell>
 
-            {/* Các cột scroll được */}
             {[
               "Meter-read",
               "Power",
@@ -393,7 +396,12 @@ const StickyTable = ({ rows }) => {
               <TableCell
                 key={col}
                 align="right"
-                sx={{ minWidth: 120, zIndex: 1 }}
+                sx={{
+                  minWidth: 120,
+                  backgroundColor: theme.palette.text.header_option,
+                  color: "white",
+                  zIndex: 1,
+                }}
               >
                 {col}
               </TableCell>
@@ -401,18 +409,24 @@ const StickyTable = ({ rows }) => {
           </TableRow>
         </TableHead>
 
-        <TableBody
-          sx={{
-            overflow: "scroll",
-          }}
-        >
+        <TableBody>
           {rows.map((row, i) => (
-            <TableRow key={i}>
+            <TableRow
+              key={i}
+              sx={{
+                backgroundColor: i % 2 === 0 ? "#1b1b1b" : "#2a2a2a",
+              }}
+            >
               <TableCell
                 sx={{
                   position: "sticky",
                   left: 0,
-                  backgroundColor: "#f5f5f5",
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                  color: theme.palette.table.text,
+                  minWidth: 180,
                   zIndex: 1,
                 }}
               >
@@ -421,20 +435,102 @@ const StickyTable = ({ rows }) => {
               <TableCell
                 sx={{
                   position: "sticky",
-                  left: 150,
-                  backgroundColor: "#f5f5f5",
+                  left: 180,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                  color: theme.palette.table.text,
+                  minWidth: 150,
                   zIndex: 1,
                 }}
               >
                 {row.status}
               </TableCell>
-              <TableCell align="right">{row.meter}</TableCell>
-              <TableCell align="right">{row.power}</TableCell>
-              <TableCell align="right">{row.input}</TableCell>
-              <TableCell align="right">{row.eff}</TableCell>
-              <TableCell align="right">{row.temp}</TableCell>
-              <TableCell align="right">{row.downString}</TableCell>
-              <TableCell align="right">{row.yield}</TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.meter}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.power}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.input}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.eff}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.temp}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.downString}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.yield}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -444,16 +540,16 @@ const StickyTable = ({ rows }) => {
 };
 
 const MeterTable = ({ rows }) => {
+  let theme = useTheme();
   return (
     <TableContainer
       component={Paper}
       sx={{
         maxHeight: 500,
         overflow: "auto",
-        
       }}
     >
-      <Table stickyHeader sx={{minWidth: "1300px"}}>
+      <Table stickyHeader sx={{ minWidth: "1300px" }}>
         <TableHead>
           <TableRow>
             <TableCell
@@ -461,8 +557,8 @@ const MeterTable = ({ rows }) => {
                 position: "sticky",
                 left: 0,
                 zIndex: 2,
-                backgroundColor: "#003049",
                 color: "white",
+                backgroundColor: theme.palette.text.header_option,
               }}
             >
               Meter Name
@@ -480,7 +576,12 @@ const MeterTable = ({ rows }) => {
               <TableCell
                 key={col}
                 align="right"
-                sx={{ minWidth: 120, zIndex: 1 }}
+                sx={{
+                  minWidth: 120,
+                  zIndex: 1,
+                  backgroundColor: theme.palette.text.header_option,
+                  color: "white",
+                }}
               >
                 {col}
               </TableCell>
@@ -501,17 +602,99 @@ const MeterTable = ({ rows }) => {
                   left: 0,
                   backgroundColor: "#f5f5f5",
                   zIndex: 1,
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
                 }}
               >
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.type}</TableCell>
-              <TableCell align="right">{row.attribute}</TableCell>
-              <TableCell align="right">{row.state}</TableCell>
-              <TableCell align="right">{row.active_generate}</TableCell>
-              <TableCell align="right">{row.active_consume}</TableCell>
-              <TableCell align="right">{row.reactive_generate}</TableCell>
-              <TableCell align="right">{row.reactive_consume}</TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.type}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.attribute}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.state}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.active_generate}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.active_consume}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.reactive_generate}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.reactive_consume}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -520,8 +703,8 @@ const MeterTable = ({ rows }) => {
   );
 };
 
-
 const WeatherTable = ({ rows }) => {
+  let theme = useTheme();
   return (
     <TableContainer
       component={Paper}
@@ -530,7 +713,7 @@ const WeatherTable = ({ rows }) => {
         overflow: "auto",
       }}
     >
-      <Table stickyHeader sx={{minWidth: "1300px"}}>
+      <Table stickyHeader sx={{ minWidth: "1300px" }}>
         <TableHead>
           <TableRow>
             <TableCell
@@ -538,9 +721,9 @@ const WeatherTable = ({ rows }) => {
                 position: "sticky",
                 left: 0,
                 zIndex: 2,
-                backgroundColor: "#003049",
+                backgroundColor: theme.palette.text.header_option,
                 color: "white",
-                minWidth: "150px"
+                minWidth: "150px",
               }}
             >
               Wheather Station Name
@@ -558,13 +741,17 @@ const WeatherTable = ({ rows }) => {
               "Humidity (%)",
               "Wind Direction ",
               "Wind Speed (m/s)",
-              "Rainfall (mm)"
-
+              "Rainfall (mm)",
             ].map((col) => (
               <TableCell
                 key={col}
                 align="right"
-                sx={{ minWidth: 120, zIndex: 1 }}
+                sx={{
+                  minWidth: 120,
+                  zIndex: 1,
+                  backgroundColor: theme.palette.text.header_option,
+                  color: "white",
+                }}
               >
                 {col}
               </TableCell>
@@ -583,24 +770,172 @@ const WeatherTable = ({ rows }) => {
                 sx={{
                   position: "sticky",
                   left: 0,
-                  backgroundColor: "#f5f5f5",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
                   zIndex: 1,
                 }}
               >
                 {row.name}
               </TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.state}</TableCell>
-              <TableCell align="right"sx = {{width: "100px"}}>{row.poa}</TableCell>
-              <TableCell align="right"sx = {{width: "100px"}}>{row.poa2}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.ghi}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.ambient_temp}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.module_temp_1}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.module_temp_2}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.module_temp_3}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.humidity}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.wind_direction}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.wind_speed}</TableCell>
-              <TableCell align="right" sx = {{width: "100px"}}>{row.rainfall}</TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.state}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.poa}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.poa2}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.ghi}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.ambient_temp}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.module_temp_1}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.module_temp_2}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.module_temp_3}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.humidity}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.wind_direction}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.wind_speed}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  width: "100px",
+                  color: theme.palette.table.text,
+                  backgroundColor:
+                    i % 2 === 0
+                      ? theme.palette.table.background_odd
+                      : theme.palette.table.background_even,
+                }}
+              >
+                {row.rainfall}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -665,7 +1000,7 @@ export default function DeviceList() {
         ) : selected === "METER" ? (
           <MeterTable rows={meterdata} />
         ) : (
-          <WeatherTable rows={weatherdata}/>
+          <WeatherTable rows={weatherdata} />
         )}
       </Box>
     </Box>

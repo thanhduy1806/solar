@@ -186,7 +186,7 @@ export default function PersistentDrawerLeft() {
           items={[
             { to: "/chartingtool", label: "Charting Tool" },
             { to: "/availability", label: "Availability" },
-            { to: "/devicelist", label: "Device List" },
+            { to: "/topologyanalysis", label: "Topology Analysis" },
           ]}
         />
         <MyOption

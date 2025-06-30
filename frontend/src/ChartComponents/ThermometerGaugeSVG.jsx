@@ -1,9 +1,9 @@
 
 import React, { useEffect, useRef } from "react";
 
-const ThermometerGaugeSVG = ({ value, max , unit = "", label = "" }) => {
+const ThermometerGaugeSVG = ({ value, max , unit = "", label = "", size = 120 }) => {
   const waveRef = useRef(null);
-  const size = 120; // width = height for a circle
+  // const size = 120; // width = height for a circle
 
   useEffect(() => {
     let frame = 0;
