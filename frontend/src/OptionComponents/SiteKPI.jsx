@@ -1,26 +1,20 @@
-import { Button, Grid } from "@mui/material";
-import MyBarChart from "../ChartComponents/BarChart";
 import MyLineChart from "../ChartComponents/LineChart2";
-import InverterRanking from "../DataComponents/InverterRanking";
 import { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
 import axios from "axios";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker"; // table to choose calendar
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"; // support datepicker to know: which lib?, format data?...
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"; // “bộ chuyển đổi” để MUI hiểu được thư viện Day.js mà bạn đang dùng.
 import dayjs from "dayjs"; // lib datetime using
-import MyButton from "../InteractComponent/myButton";
-import MyCalendar from "../InteractComponent/myCalendar";
-import { Box, flex, sizeHeight } from "@mui/system";
-import { ThemeContext } from "@emotion/react";
+import { alignItems, Box, flex, justifyContent, sizeHeight } from "@mui/system";
 import { useTheme } from "@mui/material/styles";
-
-import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
 import DropDownButton from "../InteractComponent/DropDownButton";
 import CombinedChart from "../ChartComponents/CombineChart";
 import ThermometerGaugeSVG from "../ChartComponents/ThermometerGaugeSVG";
 import RowBar from "../ChartComponents/RowBar";
+import IconDropDown from "../InteractComponent/IconDropDown";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
+import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf";
+import TocIcon from "@mui/icons-material/Toc";
+import MarginIcon from "@mui/icons-material/Margin";
+import SolarPowerIcon from "@mui/icons-material/SolarPower";
 
 const iverter_yield = [
   { label: "Bk_1", value: "5" },
@@ -87,19 +81,32 @@ function SiteKPI() {
     setPick(event.target.value);
     console.log("Selected:", event.target.value);
   };
+
+  const option2 = [
+    "Real-Time Perfomance",
+    "Inveter Output Power Deviation",
+    "Production",
+    "Yield",
+  ];
+  const [pick2, setPick2] = useState("Yield");
+  const handleChange2 = (event) => {
+    setPick2(event.target.value);
+    console.log("Selected:", event.target.value);
+  };
+
   return (
     <Box
       sx={{
         padding: "20px",
         display: "flex",
         flexWrap: "wrap",
-        
+        gap: "20px",
       }}
     >
       <Box
         sx={{
           flex: 2,
-          p: 2,
+
           borderRadius: 2,
           width: {
             xs: "100%",
@@ -108,11 +115,17 @@ function SiteKPI() {
           },
         }}
       >
-        <div style={{}}>
+        <div
+          style={{
+            height: "298px",
+            backgroundColor: theme.palette.background.box,
+          }}
+        >
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: "flex-start",
+              backgroundColor: theme.palette.background.head_box,
             }}
           >
             <DropDownButton
@@ -126,6 +139,7 @@ function SiteKPI() {
               display: "flex",
               justifyContent: "center",
               fontSize: "30px",
+              marginTop: "40px",
             }}
           >
             Bach khoa
@@ -135,42 +149,206 @@ function SiteKPI() {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-around",
+              marginTop: "30px",
             }}
           >
             <div>
-              <div>{}37</div>
-              <div>Temperature</div>
+              <div style={{ fontSize: "30px", textAlign: "center" }}>{}37</div>
+              <div
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Temperature
+              </div>
             </div>
             <div>
-              <div>0 Wm/h</div>
-              <div>Irradiance</div>
+              <div style={{ fontSize: "30px", textAlign: "center" }}>
+                0 Wm/h
+              </div>
+              <div
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Irradiance
+              </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <div>C&I Self-consumption</div>
-          <div>Normal</div>
+        <div
+          style={{
+            height: "190px",
+            marginTop: "20px",
+            backgroundColor: theme.palette.background.box,
+          }}
+        >
           <div
             style={{
               display: "flex",
               flexDirection: "row",
+              justifyContent: "space-around",
+              alignItems: "center",
+              height: "40px",
+              backgroundColor: theme.palette.background.head_box,
             }}
           >
-            <div>Active Power</div>
-            <div>Capacity</div>
+            <div style={{ fontWeight: "bold", fontSize: "16px" }}>
+              C&I Self-consumption
+            </div>
+            <div style={{ fontWeight: "bold", fontSize: "16px" }}>Normal</div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+              marginTop: "30px",
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Active Power
+              </div>
+              <div style={{ fontSize: "30px", textAlign: "center" }}>{}0W </div>
+            </div>
+            <div>
+              <div
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Capacity
+              </div>
+              <div style={{ fontSize: "30px", textAlign: "center" }}>
+                {}1.19 MWp
+              </div>
+            </div>
           </div>
         </div>
 
-        <div>
-          <div>Production</div>
-          <div></div>
+        <div
+          style={{
+            height: "298px",
+            backgroundColor: theme.palette.background.box,
+            marginTop: "20px",
+          }}
+        >
+          <div
+            style={{
+              height: "40px",
+              backgroundColor: theme.palette.background.head_box,
+              fontWeight: "bold",
+              fontSize: "16px",
+              display: "flex",
+              alignItems: "center"
+            }}
+          >
+            Production
+          </div>
+          <div
+            style={{
+              alignContent: "center",
+              paddingTop: "20px"
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: 30,
+                padding: "30px",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Inverter
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Energy Meter
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box sx={{}}>
+                  <SolarPowerIcon sx={{ fontSize: "30px" }} />
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                  }}
+                >
+                  -------------- 99.33% --------------
+                </Box>
+                <Box sx={{}}>
+                  <MarginIcon sx={{ fontSize: "30px" }} />
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                  }}
+                >
+                  6.01 MWh
+                </Box>
+
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                  }}
+                >
+                  5.97 MWh
+                </Box>
+              </Box>
+              <Box
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-around",
+                }}
+              ></Box>
+            </div>
+          </div>
         </div>
       </Box>
       <Box
         sx={{
           flex: 4,
-          p: 2,
           borderRadius: 2,
           width: {
             xs: "100%",
@@ -194,49 +372,204 @@ function SiteKPI() {
             display: "flex",
             flexDirection: "row",
             marginTop: "20px",
-            height:"160px"
+            height: "190px",
+            gap: "20px",
           }}
         >
-          <div>
+          <div
+            style={{
+              flex: "1",
+            }}
+          >
             <div
               style={{
                 backgroundColor: theme.palette.background.head_box,
-                
+                height: "40px",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
-              Yield{" "}
+              <div>{pick2}</div>
+              <div>
+                <IconDropDown
+                  options={option2}
+                  handleChange={handleChange2}
+                  pick={pick2}
+                />
+              </div>
             </div>
             <div
               style={{
                 backgroundColor: theme.palette.background.box,
+                height: "150px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
+              {" "}
               <ThermometerGaugeSVG
                 // value={latestdata ? latestdata.temp.toFixed(1) : "--"}
-                label="TEMPERATURE"
+                value={50}
                 max={70}
-                unit="°C"
-                size={80}
+                unit="h"
+                size={100}
               />
             </div>
           </div>
-          <div>
+          <div
+            style={{
+              flex: "1",
+            }}
+          >
             <div
               style={{
                 backgroundColor: theme.palette.background.head_box,
+                height: "40px",
+                display: "flex",
+                alignItems: "center",
               }}
             >
               Site Metrics
             </div>
-            <div></div>
+            <div
+              style={{
+                backgroundColor: theme.palette.background.box,
+                height: "150px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: 6,
+                padding: "30px",
+              }}
+            >
+              <Box
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    flex: "2",
+                  }}
+                >
+                  Production
+                </Box>
+                <Box
+                  sx={{
+                    flex: "1",
+                  }}
+                >
+                  <ElectricBoltIcon />
+                </Box>
+                <Box
+                  sx={{
+                    flex: "1",
+                  }}
+                >
+                  5.79Wh
+                </Box>
+              </Box>
+              <Box
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <Box
+                  sx={{
+                    flex: "2",
+                  }}
+                >
+                  Yield
+                </Box>
+                <Box
+                  sx={{
+                    flex: "1",
+                  }}
+                >
+                  <AccessTimeIcon />
+                </Box>
+                <Box
+                  sx={{
+                    flex: "1",
+                  }}
+                >
+                  5h
+                </Box>
+              </Box>
+              <Box
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <Box
+                  sx={{
+                    flex: "2",
+                  }}
+                >
+                  Revenue
+                </Box>
+                <Box
+                  sx={{
+                    flex: "1",
+                  }}
+                >
+                  <TocIcon />
+                </Box>
+                <Box
+                  sx={{
+                    flex: "1",
+                  }}
+                >
+                  5.3 K CNY
+                </Box>
+              </Box>
+              <Box
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-around",
+                }}
+              >
+                <Box
+                  sx={{
+                    flex: "2",
+                  }}
+                >
+                  CO2 Reduction
+                </Box>
+                <Box
+                  sx={{
+                    flex: "1",
+                  }}
+                >
+                  <EnergySavingsLeafIcon />
+                </Box>
+                <Box
+                  sx={{
+                    flex: "1",
+                  }}
+                >
+                  5 t
+                </Box>
+              </Box>
+            </div>
           </div>
         </div>
-        <div>
-      
+        <div
+          style={{
+            marginTop: "20px",
+          }}
+        >
           <div
             style={{
               backgroundColor: theme.palette.background.box,
-              marginTop: '20px'
             }}
           >
             {" "}
@@ -253,25 +586,22 @@ function SiteKPI() {
       </Box>
       <Box
         sx={{
-          p: 2,
-          flex: 2,
+          flex: 1.5,
           borderRadius: 2,
           width: {
             xs: "100%",
             sm: "48%",
             md: "32%",
             display: flex,
-            flexDirection: "column"
+            flexDirection: "column",
           },
         }}
       >
-        <Box sx={{
-            
-        }}> 
+        <Box sx={{}}>
           <div
             style={{
               backgroundColor: theme.palette.background.head_box,
-              height: "40px"
+              height: "40px",
             }}
           >
             Inverter Yield Ranking
@@ -283,8 +613,9 @@ function SiteKPI() {
               backgroundColor: theme.palette.background.box,
             }}
           >
-            {iverter_yield.map((item) => (
+            {iverter_yield.map((item, index) => (
               <RowBar
+                key={index}
                 label={item.label}
                 value={parseFloat(item.value)}
                 maxvalue={5}
@@ -295,25 +626,29 @@ function SiteKPI() {
             ))}
           </div>
         </Box>
-        <Box sx={{
-            marginTop: "20px"
-        }}>
+        <Box
+          sx={{
+            marginTop: "20px",
+          }}
+        >
           <div
             style={{
               backgroundColor: theme.palette.background.head_box,
+              height: "40px",
             }}
           >
             Inverter Production
           </div>
           <div
             style={{
-              height: "400px",
+              height: "468px",
               overflow: "auto",
               backgroundColor: theme.palette.background.box,
             }}
           >
-            {iverter_yield.map((item) => (
+            {iverter_yield.map((item, index) => (
               <RowBar
+                key={index}
                 label={item.label}
                 value={parseFloat(item.value)}
                 maxvalue={5}
