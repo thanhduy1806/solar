@@ -14,6 +14,7 @@ export const getTheme = (mode) =>
         option: mode === "dark" ? "#636155  " : "#c1d2e3",
         string: mode === "dark" ? "#3e3a2f" : "#b6c9d6",
         head_string: mode === "dark" ? "#9c865d" : "#406280",
+        button: mode === "dark" ? "rgb(251 253 150 / 16%)":"#cbe7ff",
         box:
           mode === "dark"
             ? "rgba(55, 54, 46, 0.5)"
@@ -21,13 +22,14 @@ export const getTheme = (mode) =>
         head_box:
           mode === "dark"
             ? "rgba(78, 78, 65, 0.5)"
-            : "rgba(154, 179, 195, 0.5)",
+            : "rgba(135, 195, 232, 0.5)",
       },
       text: {
-        header_option: mode === "dark" ? "#b48a60" : "#283593",
+        header_option: mode === "dark" ? "#c78c0c" : "#283593",
         option: mode === "dark" ? "#d4bfa3" : "#314ad6",
         header_chart: mode === "dark" ? "#" : "#",
         body_chart: mode === "dark" ? "#ffffff" : "#000000",
+        button: mode === "dark" ? "#f9ff99" : "#004eff",
       },
       border: {
         box: mode === "dark" ? "1px solid #555	" : "1px solidrgb(217, 212, 204)",

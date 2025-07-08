@@ -178,7 +178,7 @@ export default function PersistentDrawerLeft() {
             { to: "/alarmlog", label: "Alarm Log" },
             { to: "/alarmconfig", label: "Alarm Config" },
             { to: "/alarmsnooze", label: "Alar Snooze" },
-            { to: "alarm subscription", label: "Alarm Subscription" },
+            { to: "/alarmsubscription", label: "Alarm Subscription" },
           ]}
         />
         <MyOption
@@ -187,15 +187,6 @@ export default function PersistentDrawerLeft() {
             { to: "/chartingtool", label: "Charting Tool" },
             { to: "/availability", label: "Availability" },
             { to: "/topologyanalysis", label: "Topology Analysis" },
-          ]}
-        />
-        <MyOption
-          title="General Report"
-          items={[
-            { to: "/sitereport", label: "ASite Report" },
-            { to: "/devicereport", label: "Device Report" },
-            { to: "/productionreport", label: "Production Report" },
-            { to: "/operationreport", label: "Operation Report" },
           ]}
         />
         <MyOption

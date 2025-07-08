@@ -45,7 +45,7 @@ const MyLineChart = ({ linedata, linekey1, linekey2, label = "Biểu đồ đư�
           backgroundColor: theme.palette.background.head_box,
         }}
       >
-        <div style={{ fontWeight: "bold", fontSize: "16px" }}>{label}</div>
+        <div style={{ fontWeight: "bold", fontSize: "16px", paddingLeft: "20px", color: theme.palette.text.header_option  }}>{label}</div>
         <IconButton onClick={handleDownload} sx={{ color: theme.palette.table.text  }}>
           <DownloadOutlinedIcon />
         </IconButton>

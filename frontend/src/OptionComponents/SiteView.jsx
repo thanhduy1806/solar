@@ -68,6 +68,7 @@ function Dashboard() {
           backgroundColor: theme.palette.background.box,
           display: "flex",
           flexDirection: "row",
+          boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
         }}
       >
         <Box
@@ -90,6 +91,7 @@ function Dashboard() {
             flexDirection: "column",
             flex: "2",
             justifyContent: "center",
+            
           }}
         >
           <Box>
@@ -110,6 +112,7 @@ function Dashboard() {
             sx={{
               display: "inline-flex",
               gap: 5,
+              
             }}
           >
             <Box>Info Not Available</Box>
@@ -186,6 +189,7 @@ function Dashboard() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
         }}
       >
         <Box
@@ -221,6 +225,7 @@ function Dashboard() {
           flexDirection: "column",
           gap: 2,
           backgroundColor: theme.palette.background.box,
+          boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
         }}
       >
         <Box
@@ -298,6 +303,7 @@ function Dashboard() {
           flexDirection: "row",
           backgroundColor: theme.palette.background.box,
           alignItems: "center",
+          boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
         }}
       >
         <Box

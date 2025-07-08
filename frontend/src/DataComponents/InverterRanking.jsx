@@ -124,16 +124,6 @@ function InverterRanking() {
               >
                 Production (kWh) ↑↓
               </th>
-              {/* <th
-                onClick={() => handleSort("prwc")}
-                style={{
-                  cursor: "pointer",
-                  textAlign: "left",
-                  padding: "10px",
-                }}
-              >
-                PRwc (%) ↑↓
-              </th> */}
             </tr>
           </thead>
           <tbody>
@@ -162,7 +152,6 @@ function InverterRanking() {
                 <td style={{ padding: "10px" }}>
                   {item.production.toLocaleString()}
                 </td>
-                {/* <td style={{ padding: "10px" }}>{item.prwc.toFixed(2)}</td> */}
               </tr>
             ))}
           </tbody>

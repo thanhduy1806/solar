@@ -15,6 +15,9 @@ from datetime import datetime
 from .models import NameString
 
 
+
+
+
 class SolarSystemDataViewSet(viewsets.ModelViewSet):
     queryset = SolarSystemData.objects.all()
     serializer_class = SolarSystemDataSerializer
@@ -65,7 +68,6 @@ class HourlyDataViewSet(viewsets.ModelViewSet):
 #-------------------------------TINH TRUNG BINH DU LIEU TRONG 1H--------------------------------------
 
 def average_data(request):
-
     cache_key = "day_history"
     raw_data = value_to_dict(pop_list(cache_key))
     filter_data = defaultdict(list)
@@ -91,7 +93,7 @@ def average_data(request):
         avr_data.append({'time':key, 'avr_power' : round(total_power/count,1), 'avr_irradiance' : round(total_irradiance/count,1)})
 
     return JsonResponse(avr_data, safe=False)
-#-----------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------
 
 
 
@@ -120,6 +122,8 @@ def inverter_ranking(request):
 # dung cai list name do de gan cho cai value cua cai key name trong data, voi data la cai mang gom cac dict de lay cho inverter_ranking
 # goi du lieu moi nhat tu cache, dua vao cai id trong do de gan value cho cai yields va production tuong ung voi cai id se la cai id cho 
 # cai mang data luon, 
+
+#------------------------------------------------------------------------------------------------------------
 
 
   

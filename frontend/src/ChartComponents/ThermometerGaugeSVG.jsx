@@ -1,10 +1,10 @@
-
+import { useTheme } from "@mui/material/styles";
 import React, { useEffect, useRef } from "react";
 
 const ThermometerGaugeSVG = ({ value, max , unit = "", label = "", size = 120 }) => {
   const waveRef = useRef(null);
   // const size = 120; // width = height for a circle
-
+let theme = useTheme();
   useEffect(() => {
     let frame = 0;
     const wave = waveRef.current;
@@ -70,7 +70,7 @@ const ThermometerGaugeSVG = ({ value, max , unit = "", label = "", size = 120 })
 
         {/* Sóng nước bên trong */}
         <g clipPath="url(#wave-clip)">
-          <path ref={waveRef} fill="#b48a60" stroke="none" d="M 0 0" />
+          <path ref={waveRef} fill={theme.palette.text.option} stroke="none" d="M 0 0" />
         </g>
 
         {/* Viền nét đôi kiểu vintage */}
@@ -79,7 +79,7 @@ const ThermometerGaugeSVG = ({ value, max , unit = "", label = "", size = 120 })
           cy={size / 2}
           r={size / 2 - 1.5}
           fill="none"
-          stroke="#a18262"
+          stroke={theme.palette.text.header_option}
           strokeWidth="1.5"
         />
         <circle
@@ -87,7 +87,7 @@ const ThermometerGaugeSVG = ({ value, max , unit = "", label = "", size = 120 })
           cy={size / 2}
           r={size / 2 - 4}
           fill="none"
-          stroke="#d4bfa3"
+          stroke={theme.palette.background.option}
           strokeWidth="1"
         />
 
@@ -98,7 +98,7 @@ const ThermometerGaugeSVG = ({ value, max , unit = "", label = "", size = 120 })
           textAnchor="middle"
           fontFamily="serif"
           fontSize="20"
-          fill="#f3e7d3"
+          fill="white"
           fontWeight="bold"
         >
           {value} {unit}

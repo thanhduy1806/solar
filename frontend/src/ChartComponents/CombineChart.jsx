@@ -115,7 +115,6 @@ import {
 import * as htmlToImage from "html-to-image";
 import download from "downloadjs";
 
-
 const data = [
   { month: "Jan", actual: 120, budget: 150 },
   { month: "Feb", actual: 130, budget: 160 },
@@ -126,7 +125,7 @@ const data = [
 
 const CombinedChart = ({ label = "Chart Title" }) => {
   const chartRef = useRef(null);
-  const theme = useTheme()
+  const theme = useTheme();
   const handleDownload = () => {
     if (chartRef.current === null) return;
 
@@ -141,7 +140,7 @@ const CombinedChart = ({ label = "Chart Title" }) => {
   };
 
   return (
-    <div ref={chartRef} style={{ background: "",}}>
+    <div ref={chartRef} style={{ background: "", height: "100%", display: "flex", flexDirection: "column" }}>
       {/* Header: Label bên trái, nút tải về bên phải */}
       <div
         style={{
@@ -152,35 +151,47 @@ const CombinedChart = ({ label = "Chart Title" }) => {
           backgroundColor: theme.palette.background.head_box,
         }}
       >
-        <div style={{ fontWeight: "bold", fontSize: "16px" }}>{label}</div>
+        <div
+          style={{
+            fontWeight: "bold",
+            fontSize: "16px",
+            paddingLeft: "20px",
+            color: theme.palette.text.header_option,
+          }}
+        >
+          {label}
+        </div>
 
-        <IconButton onClick={handleDownload} sx={{ color: theme.palette.table.text }}>
+        <IconButton
+          onClick={handleDownload}
+          sx={{ color: theme.palette.table.text }}
+        >
           <DownloadOutlinedIcon />
         </IconButton>
       </div>
-
-      <ResponsiveContainer width="100%" height={250}>
-        <ComposedChart data={data} barSize={30}>
-          <CartesianGrid strokeDasharray="" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="actual" fill="#0968b5" name="Actual Production" />
-          <Line
-            type="monotone"
-            dataKey="budget"
-            stroke="#fbc02d"
-            strokeWidth={2}
-            dot={{ r: 2 }}
-            name="Budget Production"
-            fill="#FFA500"
-          />
-        </ComposedChart>
-      </ResponsiveContainer>
+      <div style={{height: "100%"}}>
+        <ResponsiveContainer width="100%" height="100%">
+          <ComposedChart data={data} barSize={30}>
+            <CartesianGrid vertical={false} stroke="#999" strokeOpacity={0.3} />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="actual" fill="#0968b5" name="Actual Production" />
+            <Line
+              type="monotone"
+              dataKey="budget"
+              stroke="#fbc02d"
+              strokeWidth={2}
+              dot={{ r: 2 }}
+              name="Budget Production"
+              fill="#FFA500"
+            />
+          </ComposedChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };
-
 
 export default CombinedChart;

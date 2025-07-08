@@ -119,6 +119,7 @@ function SiteKPI() {
           style={{
             height: "298px",
             backgroundColor: theme.palette.background.box,
+            boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
           }}
         >
           <div
@@ -182,6 +183,7 @@ function SiteKPI() {
             height: "190px",
             marginTop: "20px",
             backgroundColor: theme.palette.background.box,
+            boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
           }}
         >
           <div
@@ -194,10 +196,10 @@ function SiteKPI() {
               backgroundColor: theme.palette.background.head_box,
             }}
           >
-            <div style={{ fontWeight: "bold", fontSize: "16px" }}>
+            <div style={{ fontWeight: "bold", fontSize: "16px", color: theme.palette.text.header_option, }}>
               C&I Self-consumption
             </div>
-            <div style={{ fontWeight: "bold", fontSize: "16px" }}>Normal</div>
+            <div style={{ fontWeight: "bold", fontSize: "16px", color: theme.palette.text.header_option, }}>Normal</div>
           </div>
 
           <div
@@ -238,6 +240,7 @@ function SiteKPI() {
             height: "298px",
             backgroundColor: theme.palette.background.box,
             marginTop: "20px",
+            boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
           }}
         >
           <div
@@ -247,7 +250,9 @@ function SiteKPI() {
               fontWeight: "bold",
               fontSize: "16px",
               display: "flex",
-              alignItems: "center"
+              alignItems: "center",
+              color: theme.palette.text.header_option, 
+              paddingLeft: "20px"
             }}
           >
             Production
@@ -355,17 +360,20 @@ function SiteKPI() {
             sm: "48%",
             md: "32%",
           },
+          
         }}
       >
-        <div>
+        
           <div
             style={{
               backgroundColor: theme.palette.background.box,
+              height: "298px",
+              boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
             }}
           >
             {" "}
             <CombinedChart label="Production & Irradiation" />
-          </div>
+          
         </div>
         <div
           style={{
@@ -374,11 +382,13 @@ function SiteKPI() {
             marginTop: "20px",
             height: "190px",
             gap: "20px",
+            
           }}
         >
           <div
             style={{
               flex: "1",
+              boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
             }}
           >
             <div
@@ -389,9 +399,10 @@ function SiteKPI() {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
+                color: theme.palette.text.header_option,
               }}
             >
-              <div>{pick2}</div>
+              <div style={{marginLeft: "20px"}}>{pick2}</div>
               <div>
                 <IconDropDown
                   options={option2}
@@ -422,6 +433,7 @@ function SiteKPI() {
           <div
             style={{
               flex: "1",
+              boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
             }}
           >
             <div
@@ -430,6 +442,8 @@ function SiteKPI() {
                 height: "40px",
                 display: "flex",
                 alignItems: "center",
+                color: theme.palette.text.header_option,  
+                paddingLeft: "20px"
               }}
             >
               Site Metrics
@@ -483,6 +497,7 @@ function SiteKPI() {
                 <Box
                   sx={{
                     flex: "2",
+                    
                   }}
                 >
                   Yield
@@ -565,11 +580,13 @@ function SiteKPI() {
         <div
           style={{
             marginTop: "20px",
+            boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
           }}
         >
           <div
             style={{
               backgroundColor: theme.palette.background.box,
+              boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
             }}
           >
             {" "}
@@ -597,11 +614,15 @@ function SiteKPI() {
           },
         }}
       >
-        <Box sx={{}}>
+        <Box sx={{boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',}}>
           <div
             style={{
               backgroundColor: theme.palette.background.head_box,
               height: "40px",
+              color: theme.palette.text.header_option,
+              display: "flex",
+              alignItems: "center",
+              paddingLeft: "20px"
             }}
           >
             Inverter Yield Ranking
@@ -629,12 +650,17 @@ function SiteKPI() {
         <Box
           sx={{
             marginTop: "20px",
+            boxShadow: '5px 5px 10px rgba(0,0,0,0.3)',
           }}
         >
           <div
             style={{
               backgroundColor: theme.palette.background.head_box,
               height: "40px",
+              color: theme.palette.text.header_option,
+              display: "flex",
+              alignItems: "center",
+              paddingLeft: "20px"
             }}
           >
             Inverter Production

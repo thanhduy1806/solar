@@ -108,7 +108,7 @@ const SiteCard = ({
           borderTopLeftRadius: "0.75rem",
           borderTopRightRadius: "0.75rem",
           color: "white",
-          backgroundColor: theme.palette.text.header_option,
+          backgroundColor: theme.palette.text.option,
           paddingLeft: "20px",
         }}
       >

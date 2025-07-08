@@ -91,6 +91,7 @@ function LeaderBoard() {
           <Box
             sx={{
               flex: 8,
+              height: "360px"
             }}
           >
             <CombinedChart />
